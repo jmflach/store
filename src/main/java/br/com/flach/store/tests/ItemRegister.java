@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import br.com.flach.dao.ItemDao;
 import br.com.flach.store.model.Item;
 
 public class ItemRegister {
@@ -18,8 +19,10 @@ public class ItemRegister {
 		EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("store");
 		EntityManager em = emFactory.createEntityManager();
 		
+		ItemDao dao = new ItemDao(em);
+		
 		em.getTransaction().begin();
-		em.persist(cellphone);
+		dao.register(cellphone);
 		em.getTransaction().commit();
 		em.close();
 	}
