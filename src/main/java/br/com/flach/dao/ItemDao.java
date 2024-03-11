@@ -2,6 +2,7 @@ package br.com.flach.dao;
 
 import javax.persistence.EntityManager;
 
+import br.com.flach.store.model.Category;
 import br.com.flach.store.model.Item;
 
 public class ItemDao {
@@ -14,5 +15,13 @@ public class ItemDao {
 
 	public void register(Item item) {
 		this.em.persist(item);
+	}
+	
+	public void update(Category category) {
+		this.em.merge(category);
+	}
+	
+	public void remove(Category category) {
+		this.em.remove(category);
 	}
 }
