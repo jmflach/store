@@ -22,6 +22,7 @@ public class ItemDao {
 	}
 	
 	public void remove(Item item) {
+		item = this.em.merge(item);
 		this.em.remove(item);
 	}
 }
