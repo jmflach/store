@@ -17,11 +17,11 @@ public class ItemDao {
 		this.em.persist(item);
 	}
 	
-	public void update(Category category) {
-		this.em.merge(category);
+	public void update(Item item) {
+		this.em.merge(item);
 	}
 	
-	public void remove(Category category) {
-		this.em.remove(category);
+	public void remove(Item item) {
+		this.em.remove(item);
 	}
 }
