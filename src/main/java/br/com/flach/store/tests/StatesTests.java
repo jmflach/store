@@ -18,10 +18,18 @@ public class StatesTests {
 		// This change will be commited:
 		cellphoneCategory.setName("XPTO");
 		
-		em.getTransaction().commit();
-		em.close();
+		em.flush();
+		em.clear();
 		
 		// This change will not be commited:
-		cellphoneCategory.setName("XPTO");
+		cellphoneCategory.setName("XPTO2");
+		
+		cellphoneCategory = em.merge(cellphoneCategory);
+		
+		// This change will be commited:
+		cellphoneCategory.setName("XPTO3");
+		em.flush();
+		
+		// em.close();
 	}
 }
