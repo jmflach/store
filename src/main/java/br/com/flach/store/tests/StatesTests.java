@@ -30,6 +30,10 @@ public class StatesTests {
 		cellphoneCategory.setName("XPTO3");
 		em.flush();
 		
+		em.remove(cellphoneCategory);
+		
+		em.flush();
+		
 		// em.close();
 	}
 }
