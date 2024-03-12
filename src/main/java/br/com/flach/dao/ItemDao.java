@@ -35,5 +35,19 @@ public class ItemDao {
 		String jpql = "SELECT p FROM Item p";
 		return em.createQuery(jpql, Item.class).getResultList();
 	}
+	
+	public List<Item> selectByName(String name) {
+		String jpql = "SELECT p FROM Item p WHERE p.name = :n";
+		return em.createQuery(jpql, Item.class)
+				.setParameter("n", name)
+				.getResultList();
+	}
+	
+	public List<Item> selectByCategory(String category) {
+		String jpql = "SELECT p FROM Item p WHERE p.category.name = :c";
+		return em.createQuery(jpql, Item.class)
+				.setParameter("c", category)
+				.getResultList();
+	}
 }
 

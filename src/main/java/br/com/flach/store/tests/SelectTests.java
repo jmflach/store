@@ -21,9 +21,15 @@ public class SelectTests {
 		Item p = itemDao.selectById(1l);
 		System.out.println(p.getPrice());
 		
-		List<Item> allItems = itemDao.listAll();
+		List<Item> items = itemDao.listAll();
+		items.forEach(x -> System.out.println(x.getName()));
 		
-		allItems.forEach(x -> System.out.println(x.getName()));
+		items = itemDao.selectByName("Iphone X");
+		items.forEach(x -> System.out.println(x.getName()));
+		
+		items = itemDao.selectByCategory("CELLPHONE");
+		items.forEach(x -> System.out.println(x.getName()));
+		
 	}
 
 	private static void insertItem() {
