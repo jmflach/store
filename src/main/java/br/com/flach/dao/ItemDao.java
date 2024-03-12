@@ -1,8 +1,9 @@
 package br.com.flach.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
-import br.com.flach.store.model.Category;
 import br.com.flach.store.model.Item;
 
 public class ItemDao {
@@ -25,4 +26,14 @@ public class ItemDao {
 		item = this.em.merge(item);
 		this.em.remove(item);
 	}
+	
+	public Item selectById(Long id) {
+		return em.find(Item.class, id);
+	}
+	
+	public List<Item> listAll() {
+		String jpql = "SELECT p FROM Item p";
+		return em.createQuery(jpql, Item.class).getResultList();
+	}
 }
+
