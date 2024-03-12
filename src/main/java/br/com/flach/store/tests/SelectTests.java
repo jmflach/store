@@ -30,6 +30,7 @@ public class SelectTests {
 		items = itemDao.selectByCategory("CELLPHONE");
 		items.forEach(x -> System.out.println(x.getName()));
 		
+		System.out.println(itemDao.selectPriceByName("Iphone X"));
 	}
 
 	private static void insertItem() {

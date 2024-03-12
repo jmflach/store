@@ -1,5 +1,6 @@
 package br.com.flach.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -48,6 +49,13 @@ public class ItemDao {
 		return em.createQuery(jpql, Item.class)
 				.setParameter("c", category)
 				.getResultList();
+	}
+	
+	public BigDecimal selectPriceByName(String name) {
+		String jpql = "SELECT p.price FROM Item p WHERE p.name = :n";
+		return em.createQuery(jpql, BigDecimal.class)
+				.setParameter("n", name)
+				.getSingleResult();
 	}
 }
 
